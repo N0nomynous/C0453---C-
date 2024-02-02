@@ -37,12 +37,12 @@ namespace ConsoleAppProject.App01
 
         private void CalculateFeet()
         {
-
+            feet = miles + 5280;
         }
 
         private void OutputFeet()
         {
-
+            Console.WriteLine(miles + "miles is" + feet + "feet!");
         }
     }
 }
