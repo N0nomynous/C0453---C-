@@ -54,7 +54,7 @@ namespace ConsoleAppProject.App01
 
         private void OutputFeet()
         {
-            Console.WriteLine(miles + "miles is" + feet + "feet!");
+            Console.WriteLine(miles + " miles is " + feet + " feet!");
         }
     }
 }
