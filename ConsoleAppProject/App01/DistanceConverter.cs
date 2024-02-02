@@ -12,14 +12,36 @@ namespace ConsoleAppProject.App01
     {
         public const int FEET_IN_MILES = 5280;
 
+        public const double METRES_IN_MILES = 1609.34;
+
         private double miles;
 
         private double feet;
 
+        private double metres;
+
         /// <summary>
         /// 
         /// </summary>
-        public void Run()
+        public void MilesToFeet()
+        {
+            OutputHeading();
+            InputMiles();
+            CalculateFeet();
+            OutputFeet();
+
+        }
+
+        public void FeetToMiles()
+        {
+            OutputHeading();
+            InputMiles();
+            CalculateFeet();
+            OutputFeet();
+
+        }
+
+        public void MilesToMetres()
         {
             OutputHeading();
             InputMiles();
