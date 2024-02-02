@@ -10,7 +10,10 @@ namespace ConsoleAppProject.App01
     /// </author>
     public class DistanceConverter
     {
+        public const int FEET_IN_MILES = 5280;
+
         private double miles;
+
         private double feet;
 
         /// <summary>
@@ -18,10 +21,19 @@ namespace ConsoleAppProject.App01
         /// </summary>
         public void Run()
         {
+            OutputHeading();
             InputMiles();
             CalculateFeet();
             OutputFeet();
 
+        }
+
+        private void OutputHeading()
+        {
+            Console.WriteLine("\n--------------------------------------------------");
+            Console.WriteLine("            Distance Converter created by         ");
+            Console.WriteLine("                    Noman Syed                    ");
+            Console.WriteLine("--------------------------------------------------\n");
         }
 
         /// <summary>
