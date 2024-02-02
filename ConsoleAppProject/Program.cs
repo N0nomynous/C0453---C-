@@ -11,7 +11,7 @@ namespace ConsoleAppProject
     /// to start App01 to App05 for CO453 CW1
     /// 
     /// This Project has been modified by:
-    /// Noman Syed 26/01/2024
+    /// Derek Peacock 05/02/2022
     /// </summary>
     public static class Program
     {
@@ -24,10 +24,9 @@ namespace ConsoleAppProject
             Console.WriteLine("    BNU CO453 Applications Programming 2022-2023! ");
             Console.WriteLine(" =================================================");
             Console.WriteLine();
-            Console.Beep();
 
             DistanceConverter converter = new DistanceConverter();
-            converter.Run();
+            //converter.run();
         }
     }
 }
