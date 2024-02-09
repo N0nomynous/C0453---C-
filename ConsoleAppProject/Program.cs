@@ -1,5 +1,5 @@
 ﻿using ConsoleAppProject.App01;
-using ConsoleAppProject.App03;
+using ConsoleAppProject.App02;
 using ConsoleAppProject.Helpers;
 using System;
 
@@ -29,6 +29,9 @@ namespace ConsoleAppProject
             DistanceConverter converter = new DistanceConverter();
 
             converter.ConvertDistance();
+
+            BMI bmi = new BMI();
+            bmi.Main();
 
         }
     }
