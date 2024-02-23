@@ -47,7 +47,7 @@ namespace ConsoleAppProject.App01
             OutputHeading();
 
             fromUnit = SelectUnit(" Please select the from distance unit > ");
-            toUnit = SelectUnit(" please select the to distance unit > ");
+            toUnit = SelectUnit(" Now please select the distance unit your selected unit should be converted to > ");
 
 
             Console.WriteLine($"\n Converting {fromUnit} to {toUnit}");
