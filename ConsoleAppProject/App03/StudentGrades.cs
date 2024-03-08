@@ -1,67 +1,161 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography.X509Certificates;
 using ConsoleAppProject.Helpers;
 
-namespace StudentGradeApp
+namespace ConsoleAppProject.App03
 {
-    class Program
+    /// <summary>
+    /// At the moment this class just tests the
+    /// Grades enumeration names and descriptions
+    /// </summary>
+    public class StudentGrades
     {
-        static void Main(string[] args)
+        // Constants (Grade Boundaries)
+
+        public const int LowestMark = 0;
+        public const int LowestGradeD = 40;
+        public const int LowestGradeC = 50;
+        public const int LowestGradeB = 60;
+        public const int LowestGradeA = 70;
+        public const int HighestMark = 100;
+
+        //Properties
+        public string [] Students { get; set; }
+
+        public int[] Marks { get; set; }
+
+        public int[] GradeProfile { get; set; }
+
+        public double Mean { get; set; }
+
+        public int Minimum { get; set; }
+
+        public int Maximum { get; set; }
+
+        public StudentGrades()
         {
-            Console.WriteLine("Welcome to the Student Grade Application\n");
-
-            // Input student names and marks with error handling
-            Dictionary<string, int> studentMarks = new Dictionary<string, int>();
-            for (int i = 1; i <= 10; i++)
+            Students = new string[]
             {
-                int mark;
-                bool validInput = false;
-                do
-                {
-                    Console.Write($"Enter mark for Student {i}: ");
-                    string input = Console.ReadLine();
-                    if (int.TryParse(input, out mark))
-                    {
-                        validInput = true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid input! Please enter a valid integer mark.");
-                    }
-                } while (!validInput);
+                "Abdul","Micah","Michael","Josephine",
+                "Zaynab", "Hamza", "Balbir", "Leon"
+            };
 
-                studentMarks.Add($"Student {i}", mark);
-            }
+            GradeProfile = new int[(int)Grades.A + 1];
+            Marks = new int[Students.Length];
 
-            Console.WriteLine("\nStudent\t\tMark\tGrade");
-            Console.WriteLine("--------------------------------");
-
-            // Displaying student names, marks, and grades
-            foreach (var student in studentMarks)
-            {
-                string grade = GetGrade(student.Value);
-                Console.WriteLine($"{student.Key}\t{student.Value}\t{grade}");
-            }
-
-            Console.ReadLine(); // To keep the console window open
         }
 
-        // Function to determine the grade based on the mark
-        static string GetGrade(int mark)
+        /// <summary>
+        /// Marks will be put in here.
+        /// User is supposed to input a marks from the range 0-100 for
+        /// each student and also stores the marks array.
+        /// </summary>
+        public void InputMarks()
         {
-            if (mark >= 90)
-                return "A";
-            else if (mark >= 80)
-                return "B";
-            else if (mark >= 70)
-                return "C";
-            else if (mark >= 60)
-                return "D";
-            else
-                return "F";
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Lists all of the students and display their name as well as their current marks.
+        /// </summary>
+        public void OutputMarks()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// This converts student's marks to a grade
+        /// from F (Fail) to A (Exceptional)
+        /// </summary>
+        public Grades ConvertToGrade(int mark)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Calculates as well as displays the minimum, maximum
+        /// and also overall marks for all the students.
+        /// </summary>
+        public void CalculateStats()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// This method calculates the grade profile based on specified criteria.
+        /// This method is intended to calculate a grade profile
+        /// </summary>
+        public void CalculateGradeProfile()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Grades ConvertToGrade(int mark)
+        {
+            if (mark >= 0 && mark < LowestGradeD)
+            {
+                return Grades.F;
+            }
+            else if (mark >= LowestGradeD && mark < LowestGradeC)
+            {
+                return Grades.D;
+            }
+            else if (mark >= LowestGradeC && mark < LowestGradeB)
+            {
+                return Grades.C;
+            }
+            else if (mark >= LowestGradeB && mark < LowestGradeA)
+            {
+                return Grades.B;
+            }
+            else if (mark >= LowestGradeA && mark <= HighestMark)
+            {
+                return Grades.A;
+            }
+            return Grades.F;
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void CalculateStats()
+        {
+            double total = 0;
+
+            Minimum = HighestMark;
+            Maximum = 0;
+
+            foreach(int mark in Marks)
+            {
+                total = total + mark;
+                if (mark > Maximum) Maximum = mark;
+                if (mark < Minimum) Minimum = mark;
+            }
+
+            Mean = total / Marks.Length;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void CalculateGradeProfile()
+        {
+            for (int i = 0; i < GradeProfile.Length; i++)
+            {
+                GradeProfile[i] = 0;
+            }
+
+            foreach (int mark in Marks)
+            {
+                Grades grade = ConvertToGrade(mark);
+                GradeProfile[(int)grade]++;
+            }
         }
     }
 }

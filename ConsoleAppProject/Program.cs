@@ -1,163 +1,38 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography.X509Certificates;
+﻿using ConsoleAppProject.App01;
+using ConsoleAppProject.App02;
 using ConsoleAppProject.Helpers;
+using System;
 
-
-namespace ConsoleAppProject.App03
+namespace ConsoleAppProject
 {
     /// <summary>
-    /// At the moment this class just tests the
-    /// Grades enumeration names and descriptions
+    /// The main method in this class is called first
+    /// when the application is started.  It will be used
+    /// to start App01 to App05 for CO453 CW1
+    /// 
+    /// This Project has been modified by:
+    /// Noman Syed 02/02/2024
     /// </summary>
-    public class StudentGrades
+    public static class Program
     {
-        // Constants (Grade Boundaries)
-
-        public const int LowestMark = 0;
-        public const int LowestGradeD = 40;
-        public const int LowestGradeC = 50;
-        public const int LowestGradeB = 60;
-        public const int LowestGradeA = 70;
-        public const int HighestMark = 100;
-
-        //Properties
-        public string[] Students { get; set; }
-
-        public int[] Marks { get; set; }
-
-        public int[] GradeProfile { get; set; }
-
-        public double Mean { get; set; }
-
-        public int Minimum { get; set; }
-
-        public int Maximum { get; set; }
-
-        public StudentGrades()
+        public static void Main(string[] args)
         {
-            Students = new string[]
-            {
-                "Abdul","Micah","Michael","Josephine",
-                "Zaynab", "Hamza", "Balbir", "Leon"
-            };
+            Console.ForegroundColor = ConsoleColor.Green;
 
-            GradeProfile = new int[(int)Grades.A + 1];
-            Marks = new int[Students.Length];
+            Console.WriteLine();
+            Console.WriteLine(" =================================================");
+            Console.WriteLine("    BNU CO453 Applications Programming 2022-2023! ");
+            Console.WriteLine(" =================================================");
+            Console.WriteLine();
+            Console.Beep();
 
-        }
+            DistanceConverter converter = new DistanceConverter();
 
-        /// <summary>
-        /// Marks will be put in here.
-        /// User is supposed to input a marks from the range 0-100 for
-        /// each student and also stores the marks array.
-        /// </summary>
-        public void InputMarks()
-        {
-            throw new NotImplementedException();
-        }
+            converter.ConvertDistance();
 
-        /// <summary>
-        /// Lists all of the students and display their name as well as their current marks.
-        /// </summary>
-        public void OutputMarks()
-        {
-            throw new NotImplementedException();
-        }
+            BMI bmi = new BMI();
+            bmi.Main();
 
-        /// <summary>
-        /// This converts student's marks to a grade
-        /// from F (Fail) to A (Exceptional)
-        /// </summary>
-        public Grades ConvertToGrade(int mark)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Calculates as well as displays the minimum, maximum
-        /// and also overall marks for all the students.
-        /// </summary>
-        public void CalculateStats()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// This method calculates the grade profile based on specified criteria.
-        /// This method is intended to calculate a grade profile
-        /// </summary>
-        public void CalculateGradeProfile()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public Grades ConvertToGrade(int mark)
-        {
-            if (mark >= 0 && mark < LowestGradeD)
-            {
-                return Grades.F;
-            }
-            else if (mark >= LowestGradeD && mark < LowestGradeC)
-            {
-                return Grades.D;
-            }
-            else if (mark >= LowestGradeC && mark < LowestGradeB)
-            {
-                return Grades.C;
-            }
-            else if (mark >= LowestGradeB && mark < LowestGradeA)
-            {
-                return Grades.B;
-            }
-            else if (mark >= LowestGradeA && mark <= HighestMark)
-            {
-                return Grades.A;
-            }
-            return Grades.F;
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void CalculateStats()
-        {
-            double total = 0;
-
-            Minimum = HighestMark;
-            Maximum = 0;
-
-            foreach (int mark in Marks)
-            {
-                total = total + mark;
-                if (mark > Maximum) Maximum = mark;
-                if (mark < Minimum) Minimum = mark;
-            }
-
-            Mean = total / Marks.Length;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void CalculateGradeProfile()
-        {
-            for (int i = 0; i < GradeProfile.Length; i++)
-            {
-                GradeProfile[i] = 0;
-            }
-
-            foreach (int mark in Marks)
-            {
-                Grades grade = ConvertToGrade(mark);
-                GradeProfile[(int)grade]++;
-            }
         }
     }
 }
-
