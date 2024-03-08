@@ -39,7 +39,8 @@ namespace ConsoleAppProject.App03
             Students = new string[]
             {
                 "Abdul","Micah","Michael","Josephine",
-                "Zaynab", "Hamza", "Balbir", "Leon"
+                "Zaynab", "Hamza", "Balbir", "Leon",
+                "Joelle", "Nadine"
             };
 
             GradeProfile = new int[(int)Grades.A + 1];
@@ -71,32 +72,6 @@ namespace ConsoleAppProject.App03
         /// </summary>
         public Grades ConvertToGrade(int mark)
         {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Calculates as well as displays the minimum, maximum
-        /// and also overall marks for all the students.
-        /// </summary>
-        public void CalculateStats()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// This method calculates the grade profile based on specified criteria.
-        /// This method is intended to calculate a grade profile
-        /// </summary>
-        public void CalculateGradeProfile()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public Grades ConvertToGrade(int mark)
-        {
             if (mark >= 0 && mark < LowestGradeD)
             {
                 return Grades.F;
@@ -122,7 +97,8 @@ namespace ConsoleAppProject.App03
         }
 
         /// <summary>
-        /// 
+        /// Calculates as well as displays the minimum, maximum
+        /// and also overall marks for all the students.
         /// </summary>
         public void CalculateStats()
         {
@@ -131,7 +107,7 @@ namespace ConsoleAppProject.App03
             Minimum = HighestMark;
             Maximum = 0;
 
-            foreach(int mark in Marks)
+            foreach (int mark in Marks)
             {
                 total = total + mark;
                 if (mark > Maximum) Maximum = mark;
@@ -142,7 +118,8 @@ namespace ConsoleAppProject.App03
         }
 
         /// <summary>
-        /// 
+        /// This method calculates the grade profile based on specified criteria.
+        /// This method is intended to calculate a grade profile
         /// </summary>
         public void CalculateGradeProfile()
         {
