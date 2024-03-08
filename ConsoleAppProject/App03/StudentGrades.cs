@@ -1,85 +1,67 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography.X509Certificates;
 using ConsoleAppProject.Helpers;
 
-namespace ConsoleAppProject.App03
+namespace StudentGradeApp
 {
-    /// <summary>
-    /// At the moment this class just tests the
-    /// Grades enumeration names and descriptions
-    /// </summary>
-    public class StudentGrades
+    class Program
     {
-        public string [] Students { get; set; }
-
-        public int[] Marks { get; set; }
-
-        public int[] GradeProfile { get; set; }
-
-        public double Mean { get; set; }
-
-        public int Minimum { get; set; }
-
-        public int Maximum { get; set; }
-
-        public StudentGrades()
+        static void Main(string[] args)
         {
-            Students = new string[]
+            Console.WriteLine("Welcome to the Student Grade Application\n");
+
+            // Input student names and marks with error handling
+            Dictionary<string, int> studentMarks = new Dictionary<string, int>();
+            for (int i = 1; i <= 10; i++)
             {
-                "Abdul","Micah","Michael","Josephine",
-                "Zaynab", "Hamza", "Balbir", "Leon"
-            };
+                int mark;
+                bool validInput = false;
+                do
+                {
+                    Console.Write($"Enter mark for Student {i}: ");
+                    string input = Console.ReadLine();
+                    if (int.TryParse(input, out mark))
+                    {
+                        validInput = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input! Please enter a valid integer mark.");
+                    }
+                } while (!validInput);
 
-            GradeProfile = new int[(int)Grades.A + 1];
-            Marks = new int[Students.Length];
+                studentMarks.Add($"Student {i}", mark);
+            }
 
+            Console.WriteLine("\nStudent\t\tMark\tGrade");
+            Console.WriteLine("--------------------------------");
+
+            // Displaying student names, marks, and grades
+            foreach (var student in studentMarks)
+            {
+                string grade = GetGrade(student.Value);
+                Console.WriteLine($"{student.Key}\t{student.Value}\t{grade}");
+            }
+
+            Console.ReadLine(); // To keep the console window open
         }
 
-        /// <summary>
-        /// Marks will be put in here.
-        /// User is supposed to input a marks from the range 0-100 for
-        /// each student and also stores the marks array.
-        /// </summary>
-        public void InputMarks()
+        // Function to determine the grade based on the mark
+        static string GetGrade(int mark)
         {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Lists all of the students and display their name as well as their current marks.
-        /// </summary>
-        public void OutputMarks()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// This converts student's marks to a grade
-        /// from F (Fail) to A (Exceptional)
-        /// </summary>
-        public Grades ConvertToGrade(int mark)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Calculates as well as displays the minimum, maximum
-        /// and also overall marks for all the students.
-        /// </summary>
-        public void CalculateStats()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// This method calculates the grade profile based on specified criteria.
-        /// This method is intended to calculate a grade profile
-        /// </summary>
-        public void CalculateGradeProfile()
-        {
-            throw new NotImplementedException();
+            if (mark >= 90)
+                return "A";
+            else if (mark >= 80)
+                return "B";
+            else if (mark >= 70)
+                return "C";
+            else if (mark >= 60)
+                return "D";
+            else
+                return "F";
         }
     }
 }
