@@ -22,7 +22,7 @@ namespace ConsoleAppProject.App03
         public const int HighestMark = 100;
 
         //Properties
-        public string [] Students { get; set; }
+        public string[] Students { get; set; }
 
         public int[] Marks { get; set; }
 
