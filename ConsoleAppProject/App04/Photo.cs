@@ -7,7 +7,7 @@ namespace ConsoleAppProject.App04
     /// has as sub child Massagepost and PhotoPost
     /// </summary>
     /// <author>
-    /// Ismaeel Omer
+    /// Noman Syed
     /// </author>
     public class Post
     {
