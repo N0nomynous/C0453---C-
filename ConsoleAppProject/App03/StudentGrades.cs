@@ -48,6 +48,52 @@ namespace ConsoleAppProject.App03
 
         }
 
+        public void Run()
+        {
+            int Choice;
+            string[] choices = {
+                $"Input Marks",
+                $"Output Marks",
+                $"Output Stats",
+                $"Output Grade Profile",
+                $"Quit"
+            };
+            do
+            {
+                ConsoleHelper.OutputHeading("Student Grades");
+                Choice = ConsoleHelper.SelectChoice(choices);
+
+                if (Choice == 1)
+                {
+                    InputMarks();
+                }
+                else if (Choice == 2)
+                {
+                    OutputMarks();
+                }
+                else if (Choice == 3)
+                {
+                    CalculateStats();
+                    OutputStats();
+                }
+                else if (Choice == 4)
+                {
+                    CalculateGradeProfile();
+                    OutputGradeProfile();
+                }
+
+            } while (Choice != 5);
+        }
+
+        public void OutputStats()
+        {
+
+            Console.WriteLine($" The lowest mark is {Minimum}");
+            Console.WriteLine($" The Highest mark is {Maximum}");
+            Console.WriteLine($" The average mark is {Mean}");
+        }
+
+
         /// <summary>
         /// Marks will be put in here.
         /// User is supposed to input a marks from the range 0-100 for
@@ -134,5 +180,19 @@ namespace ConsoleAppProject.App03
                 GradeProfile[(int)grade]++;
             }
         }
+        private void OutputGradeProfile()
+        {
+            Grades grade = Grades.F;
+            Console.WriteLine();
+
+            foreach (int count in GradeProfile)
+            {
+                int percentage = count * 100 / Marks.Length;
+                Console.WriteLine($" Grade {grade} {percentage}% Count {count}");
+                grade++;
+            }
+            Console.WriteLine();
+        }
+
     }
 }
