@@ -7,8 +7,9 @@ using ConsoleAppProject.Helpers;
 namespace ConsoleAppProject.App03
 {
     /// <summary>
-    /// At the moment this class just tests the
-    /// Grades enumeration names and descriptions
+    /// This program allows to let someone put marks 
+    /// into the program and the program will then
+    /// convert the marks into a grade
     /// </summary>
     public class StudentGrades
     {
@@ -101,15 +102,43 @@ namespace ConsoleAppProject.App03
         /// </summary>
         public void InputMarks()
         {
-            throw new NotImplementedException();
+            int currentMark;
+            Console.WriteLine(" Please enter the marks for each student:");
+            for (int i = 0; i < Students.Length; i++)
+            {
+                Console.Write($" Marks for {Students[i]}: ");
+                while (!int.TryParse(Console.ReadLine(), out currentMark) || currentMark < 0 || currentMark > 100)
+                {
+                    ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid mark between 0 and 100.");
+                    Console.Write($" Marks for {Students[i]}: ");
+                }
+                Marks[i] = currentMark;
+            }
+            Console.WriteLine(" All marks have been inputted");
         }
+
 
         /// <summary>
         /// Lists all of the students and display their name as well as their current marks.
         /// </summary>
         public void OutputMarks()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("\n Student Marks and Grades");
+            Console.WriteLine("----------------------------");
+
+            for (int i = 0; i < Students.Length; i++)
+            {
+
+                string student = Students[i];
+
+                int mark = Marks[i];
+
+                Grades grade = ConvertToGrade(mark);
+
+                Console.WriteLine($" {student} - Mark: {mark}, Grade: {grade}");
+            }
+
+            Console.WriteLine();
         }
 
         /// <summary>

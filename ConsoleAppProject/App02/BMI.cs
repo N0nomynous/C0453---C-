@@ -2,10 +2,13 @@
 namespace ConsoleAppProject.App02
 {
     /// <summary>
-    /// Please describe the main features of this App
+    /// The main feature of this app is being able
+    /// to be used as a BMI (Body mass index) calculator
+    /// so that the user can input their weight & height
+    /// and get a analysis of his body as an output.
     /// </summary>
     /// <author>
-    /// Student Name version 0.1
+    /// Noman Syed version 0.1
     /// </author>
 
     class BMI

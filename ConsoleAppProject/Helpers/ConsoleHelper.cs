@@ -157,5 +157,9 @@ namespace ConsoleAppProject.Helpers
             Console.WriteLine(v);
             Console.WriteLine();
         }
+
+        internal static void DisplayErrorMessage(string v)
+        {
+        }
     }
 }
