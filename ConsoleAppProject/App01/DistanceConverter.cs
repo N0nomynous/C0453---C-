@@ -169,7 +169,7 @@ namespace ConsoleAppProject.App01
                 }
                 catch (Exception E)
                 {
-                    Console.WriteLine("Error: Please enter a valid number.");
+                    Console.WriteLine("Invalid Input! Please enter a valid number.");
                 }
             } while (!isValidInput);
 
