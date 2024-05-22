@@ -151,9 +151,29 @@ namespace ConsoleAppProject.App01
         /// </summary>
         private double InputDistance(string prompt)
         {
-            Console.Write(prompt);
-            string value = Console.ReadLine();
-            return Convert.ToDouble(value);
+            double enteredDistance = 0.00;
+            bool isValidInput = false;
+            do
+            {
+                Console.Write(prompt);
+                string value = Console.ReadLine();
+                try
+                {
+                    enteredDistance = Convert.ToDouble(value);
+                    isValidInput = true;
+                    if (enteredDistance < 0)
+                    {
+                        isValidInput = false;
+                        Console.WriteLine("Invalid Input");
+                    }
+                }
+                catch (Exception E)
+                {
+                    Console.WriteLine("Error: Please enter a valid number.");
+                }
+            } while (!isValidInput);
+
+            return enteredDistance;
         }
 
 
