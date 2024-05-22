@@ -17,7 +17,7 @@ namespace ConsoleAppProject.App02
         {
             Console.WriteLine("BMI Calculator");
             Console.WriteLine("--------------");
-            Console.WriteLine("This program calculates your Body Mass Index (BMI) and determines your WHO weight status.");
+            Console.WriteLine("This program calculates your Body Mass Index (BMI) and determines your weight status.");
             Console.WriteLine();
 
             // Prompt the user to enter weight in kilograms
